@@ -54,14 +54,14 @@ autocmd BufNewFile,BufRead *.md,*.mkdn,*.markdown :set filetype=markdown
 set wildignore+=*.o,*.obj,.git,*.png,*.PNG,*.JPG,*.jpg,*.GIF,*.gif,*.pdf,*.mp3,*.avi,*.mp4,*.webm,*.pyc
 
 ""Colorscheme stuff
-let g:solarized_visibility='low'
-let g:solarized_contrast='high'
-colorscheme ir_black 
+let g:mango_visibility='low'
+let g:mango_contrast='high'
+colorscheme mango
 set background=dark
 
 
 ""indent guides
-colorscheme ir_black 
+colorscheme mango 
 set background=dark
 set ts=4 sw=4 et
 let g:indent_guides_start_level=2
@@ -95,7 +95,7 @@ let g:signify_mapping_toggle = '<C-t>'
 let g:BufKillCreateMappings = 0
 
 "" Uses jsxhint
-let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_checkers = ['javascript/jsxhint']
 
 "" Make arrow keys works for wrapped lines$
 map <up> gk
@@ -137,3 +137,6 @@ nnoremap <C-x> :tabclose<cr>
 nnoremap <Left> :bprevious<CR>
 nnoremap <Right> :bnext<CR>
 
+
+"JSX hightlight
+let g:jsx_ext_required = 0

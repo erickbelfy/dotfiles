@@ -1,6 +1,9 @@
 # Source git prompt
 source ~/.git-prompt.sh
 
+#source virtualwrapper
+source /usr/local/bin/virtualenvwrapper.sh
+
 # terminal color theming
 #PS1='\[\033[31m\]\u\[\033[33m\]@\h\[\033[32m\] \w \[\033[37m\]'
 unset color_prompt force_color_prompt
