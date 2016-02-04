@@ -3,7 +3,6 @@ filetype on "Avoids bug when comiting stuff
 filetype off "Force reloading of stuff after pathogen is loaded
 
 execute pathogen#infect()
-execute pathogen#helptags()
 
 ""Make actionscript syntax works
 syntax on
@@ -22,6 +21,9 @@ set hlsearch ""Highlight search results
 set ignorecase ""Ignore capital letters when searching in all lower case
 set smartcase ""Search using capital letter if a capital letter was typed on search
 set encoding=utf-8 nobomb "Avoids BOM and make sure to always use utf-8
+set noshowmode " Don't show the current mode (airline.vim takes care of us)
+set laststatus=2 " Always show status line
+set hidden " When a buffer is brought to foreground, remember undo history and marks
 
 ""More custom options
 set history=999
@@ -59,6 +61,22 @@ let g:mango_contrast='high'
 colorscheme mango
 set background=dark
 
+"" Poweline configs
+set guifont=Inconsolata\ for\ Powerline:h15
+let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+
+"" Additional configuration for powerline
+if has("gui_running")
+   let s:uname = system("uname")
+   if s:uname == "Darwin\n"
+      set guifont=Inconsolata\ for\ Powerline:h15
+   endif
+endif
 
 ""indent guides
 colorscheme mango 
@@ -70,8 +88,29 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=blue
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 
+""syntastic configs
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-""Uses system clipboard for yanking, only works with vim 7.3+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+""eslintme
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_generic = 1
+let g:syntastic_javascript_eslint_exec = 'eslintme'
+
+"" RainbowParenthesis.vim {{{
+augroup rainbow_parenthesis_config
+  autocmd!
+  nnoremap <leader>rp :RainbowParenthesesToggle<CR>
+augroup END
+" }}}
+
+"""Uses system clipboard for yanking, only works with vim 7.3+
 set clipboard+=unnamed
 
 "" Set the leader to comma
@@ -85,17 +124,24 @@ let g:CommandTMaxDepth=15
 "" Set easy motion to use only one leader stroke
 let g:EasyMotion_leader_key = '<Leader>'
 
-"" Change signify default navigation keys
-let g:signify_mapping_next_hunk = '<C-m>'
-let g:signify_mapping_prev_hunk = '<C-p>'
-let g:signify_mapping_toggle_highlight = '<C-g>'
-let g:signify_mapping_toggle = '<C-t>'
 
 "" I don't want any buffkill keymap
 let g:BufKillCreateMappings = 0
 
-"" Uses jsxhint
-let g:syntastic_javascript_checkers = ['javascript/jsxhint']
+
+" Airline.vim {{{
+augroup airline_config
+  autocmd!
+  let g:airline_powerline_fonts = 1
+  let g:airline_enable_syntastic = 1
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#buffer_nr_format = '%s '
+  let g:airline#extensions#tabline#buffer_nr_show = 1
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#fnamecollapse = 0
+  let g:airline#extensions#tabline#fnamemod = ':t'
+augroup END
+" }}}
 
 "" Make arrow keys works for wrapped lines$
 map <up> gk
@@ -136,7 +182,3 @@ nnoremap <C-x> :tabclose<cr>
 " Make arrows switch between buffers
 nnoremap <Left> :bprevious<CR>
 nnoremap <Right> :bnext<CR>
-
-
-"JSX hightlight
-let g:jsx_ext_required = 0
