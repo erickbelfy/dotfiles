@@ -1,8 +1,94 @@
+"
+"   ██╗   ██╗ ██╗ ███╗   ███╗ ██████╗   ██████╗
+"   ██║   ██║ ██║ ████╗ ████║ ██╔══██╗ ██╔════╝
+"   ██║   ██║ ██║ ██╔████╔██║ ██████╔╝ ██║
+"   ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║ ██╔══██╗ ██║
+" ██╗╚████╔╝  ██║ ██║ ╚═╝ ██║ ██║  ██║ ╚██████╗
+" ╚═╝ ╚═══╝   ╚═╝ ╚═╝     ╚═╝ ╚═╝  ╚═╝  ╚═════╝
+"
+"
 set nocompatible ""Disable vi compatibility
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 filetype on "Avoids bug when comiting stuff
 filetype off "Force reloading of stuff after pathogen is loaded
 
 execute pathogen#infect()
+
+" vim-plug settings to take effects open your vim, then execute command
+" :PlugInstall
+call plug#begin('~/.vim/bundle')
+
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/jelera/vim-javascript-syntax
+Plug 'jelera/vim-javascript-syntax'
+
+" Shorthand notation; fetches https://github.com/sheerun/vim-polyglot
+Plug 'sheerun/vim-polyglot'
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+" Shorthand notation; fetches https://github.com/bigfish/vim-js-context-coloring
+Plug 'bigfish/vim-js-context-coloring'
+
+" Shorthand notation; fetches https://github.com/othree/yajs.vim
+Plug 'othree/yajs.vim', { 'for': 'javascript' }
+
+" Shorthand notation; fetches https://github.com/gavocanov/vim-js-indent
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'gavocanov/vim-js-indent'
+
+" Shorthand notation; fetches https://github.com/mxw/vim-jsx
+Plug 'mxw/vim-jsx'
+
+" Shorthand notation; fetches https://github.com/othree/jspc.vim/blob/master/autoload/jspc/javascript.vim
+Plug 'othree/jspc.vim'
+
+" Shorthand notation; fetches https://github.com/othree/es.next.syntax.vim
+Plug 'othree/es.next.syntax.vim'
+
+" Shorthand notation; fetches https://github.com/othree/javascript-libraries-syntax.vim
+Plug 'othree/javascript-libraries-syntax.vim'
+
+" Shorthand notation; fetches https://github.com/ternjs/tern_for_vim
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+
+" Shorthand notation; fetches https://github.com/Shougo/neocomplete.vim
+Plug 'Shougo/neocomplete.vim'
+
+" Shorthand notation; fetches https://github.com/1995eaton/vim-better-javascript-completion
+Plug '1995eaton/vim-better-javascript-completion'
+
+" Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Group dependencies, vim-snippets depends on ultisnips
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a non-master branch
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Unmanaged plugin (manually installed and updated)
+Plug '~/my-prototype-plugin'
+
+" Add plugins to &runtimepath
+call plug#end()
 
 ""Make actionscript syntax works
 syntax on
@@ -51,14 +137,13 @@ set wildignore+=*.orig,*.svn,*.hg,*.git,*.pyc,*node_modules/**,*bower_components
 autocmd FileType html,htmldjango,xml,ctp set noexpandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType actionscript,haxe,php set noexpandtab shiftwidth=4 tabstop=4 softtabstop=4
 autocmd BufNewFile,BufRead *.md,*.mkdn,*.markdown :set filetype=markdown
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 ""Ignore these types of files
 set wildignore+=*.o,*.obj,.git,*.png,*.PNG,*.JPG,*.jpg,*.GIF,*.gif,*.pdf,*.mp3,*.avi,*.mp4,*.webm,*.pyc
 
 ""Colorscheme stuff
-let g:mango_visibility='low'
-let g:mango_contrast='high'
-colorscheme mango
+colorscheme solarized
 set background=dark
 
 "" Poweline configs
@@ -79,7 +164,7 @@ if has("gui_running")
 endif
 
 ""indent guides
-colorscheme mango 
+colorscheme solarized
 set background=dark
 set ts=4 sw=4 et
 let g:indent_guides_start_level=2
@@ -94,15 +179,21 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-""eslintme
+let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_generic = 1
-let g:syntastic_javascript_eslint_exec = 'eslintme'
 
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 "" RainbowParenthesis.vim {{{
 augroup rainbow_parenthesis_config
   autocmd!
@@ -127,6 +218,105 @@ let g:EasyMotion_leader_key = '<Leader>'
 
 "" I don't want any buffkill keymap
 let g:BufKillCreateMappings = 0
+
+
+" javascript-libraries-syntax.vim {{{
+augroup javascript_libraries_config 
+  autocmd!
+  let g:used_javascript_libs = 'underscore,backbone,angularjs,react,jasmine,flux'
+augroup END
+" }}}
+"
+
+" neocomplete_config {{{
+augroup neocomplete_config
+  autocmd!
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+augroup END
+" }}}
+"
+"
+"
+" completition.vim {{{
+augroup completition_config
+  autocmd!
+"let g:vimjs#casesensistive = 1
+" Enabled by default. flip the value to make completion matches case insensitive
+
+let g:vimjs#smartcomplete = 1
+" Disabled by default. Enabling this will let vim complete matches at any location
+" e.g. typing 'ocument' will suggest 'document' if enabled.
+
+let g:vimjs#chromeapis = 1
+" Disabled by default. Toggling this will enable completion for a number of Chrome's JavaScript extension APIs
+augroup END
+" }}}
 
 
 " Airline.vim {{{
