@@ -221,7 +221,7 @@ let g:BufKillCreateMappings = 0
 
 
 " javascript-libraries-syntax.vim {{{
-augroup javascript_libraries_config 
+augroup javascript_libraries_config
   autocmd!
   let g:used_javascript_libs = 'underscore,backbone,angularjs,react,jasmine,flux'
 augroup END
@@ -357,6 +357,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+""Close a file without closing the buffer
+nnoremap <silent> <Leader>bd :Bclose<CR>
 
 "" Configs splitjoin keys
 nmap sj :SplitjoinSplit<cr>
