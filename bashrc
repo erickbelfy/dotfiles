@@ -1,5 +1,10 @@
 # Source git prompt
-source ~/.git-prompt.sh
+source ~/git-prompt.sh
+
+#docker completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
 
 #source virtualwrapper
 source /usr/local/bin/virtualenvwrapper.sh
