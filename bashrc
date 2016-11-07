@@ -1,9 +1,21 @@
-# Source git prompt
-source ~/git-prompt.sh
-
 #docker completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
 . $(brew --prefix)/etc/bash_completion
+fi
+
+# https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+if [ -f ~/.bash/git-completion.sh ]; then
+    source ~/.bash/git-completion.sh
+fi
+
+# borrowed from http://petdance.com/2013/04/my-bash-prompt-with-gitsvn-branchstatus-display/
+if [ -f ~/.bash/prompt.sh ]; then
+    source ~/.bash/prompt.sh
+fi
+
+# `npm completion > ~/.bash/npm-completion.bash`
+if [ -f ~/.bash/npm-completion.sh ]; then
+    source ~/.bash/npm-completion.sh
 fi
 
 #source virtualwrapper

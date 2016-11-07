@@ -1,8 +1,7 @@
-[user]
-    name = Erick Belfort 
-    email = erick.belf@gmail.com
+; I removed the [user] block on purpose so other people don't copy it by mistake
+; you will need to set these values
 [github]
-    user = erickbelfy 
+    user = erickbelfy
 [color]
     branch = auto
     diff = auto
@@ -22,6 +21,19 @@
     untracked = cyan
     removed = red
 [alias]
+    ; show merge tree + commits info
+    graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+    lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+    ; basic logging for quick browsing
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cgreen\\ [%cn]" --decorate --numstat
+    ; log + file diff
+    fl = log -u
+    ; find paths that matches the string
+    f = "!git ls-files | grep -i"
+    ; delete all merged branches
+    ; dm = !git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
+    ; shortcuts
     ci = commit
     st = status -sb
     br = branch
@@ -35,4 +47,4 @@
     excludesfile = ~/.gitignore_global
 
 [diff]
-	tool = vimdiff
+  tool = vimdiff
