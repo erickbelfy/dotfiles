@@ -142,9 +142,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 ""Ignore these types of files
 set wildignore+=*.o,*.obj,.git,*.png,*.PNG,*.JPG,*.jpg,*.GIF,*.gif,*.pdf,*.mp3,*.avi,*.mp4,*.webm,*.pyc
 
-""Colorscheme stuff
-colorscheme solarized
-set background=dark
+""Colorscheme
+colorscheme neodark
+let g:neodark#use_256color = 1 " default: 0
 
 "" Poweline configs
 set guifont=Inconsolata\ for\ Powerline:h15
@@ -164,8 +164,6 @@ if has("gui_running")
 endif
 
 ""indent guides
-colorscheme solarized
-set background=dark
 set ts=4 sw=4 et
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
