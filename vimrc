@@ -178,10 +178,10 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint', 'flow', 'standard']
 
 let g:syntastic_error_symbol = '❌'
 let g:syntastic_style_error_symbol = '⁉️'
@@ -192,6 +192,7 @@ highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
+
 "" RainbowParenthesis.vim {{{
 augroup rainbow_parenthesis_config
   autocmd!
@@ -261,7 +262,14 @@ let g:vimjs#chromeapis = 1
 " Disabled by default. Toggling this will enable completion for a number of Chrome's JavaScript extension APIs
 augroup END
 " }}}
-
+"
+" Flow.vim {{{
+augroup flow_config
+  autocmd!
+  let g:flow#enable = 0
+  let g:flow#autoclose = 1
+augroup END
+" }}}
 
 " Airline.vim {{{
 augroup airline_config

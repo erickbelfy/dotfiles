@@ -48,3 +48,6 @@
 
 [diff]
   tool = vimdiff
+[user]
+	email = erick.belf@gmail.com
+	name = Erick Belfort

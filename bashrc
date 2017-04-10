@@ -39,5 +39,7 @@ export EDITOR="$VISUAL"
 # vi mode on terminal
 set -o vi
 
+export EDITOR=vim
+
 # Trigger ~/.bashrc commands
 source ~/.bashrc
