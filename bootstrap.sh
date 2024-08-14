@@ -28,6 +28,7 @@ cd ~/.vim/bundle/
 ln -s ~/.vim/bundle ~/.config/nvim/bundle
 
 # Get all plugins
+git clone git@github.com:VDuchauffour/neodark.nvim.git
 git clone https://github.com/vim-scripts/bufkill.vim
 git clone https://github.com/ctrlpvim/ctrlp.vim.git
 git clone https://github.com/tpope/vim-fugitive.git

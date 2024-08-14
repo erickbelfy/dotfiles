@@ -14,81 +14,8 @@ filetype on "Avoids bug when comiting stuff
 filetype off "Force reloading of stuff after pathogen is loaded
 
 execute pathogen#infect()
+execute pathogen#helptags()
 
-" vim-plug settings to take effects open your vim, then execute command
-" :PlugInstall
-call plug#begin('~/.vim/bundle')
-
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/jelera/vim-javascript-syntax
-Plug 'jelera/vim-javascript-syntax'
-
-" Shorthand notation; fetches https://github.com/sheerun/vim-polyglot
-Plug 'sheerun/vim-polyglot'
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-
-" Shorthand notation; fetches https://github.com/bigfish/vim-js-context-coloring
-Plug 'bigfish/vim-js-context-coloring'
-
-" Shorthand notation; fetches https://github.com/othree/yajs.vim
-Plug 'othree/yajs.vim', { 'for': 'javascript' }
-
-" Shorthand notation; fetches https://github.com/gavocanov/vim-js-indent
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'gavocanov/vim-js-indent'
-
-" Shorthand notation; fetches https://github.com/mxw/vim-jsx
-Plug 'mxw/vim-jsx'
-
-" Shorthand notation; fetches https://github.com/othree/jspc.vim/blob/master/autoload/jspc/javascript.vim
-Plug 'othree/jspc.vim'
-
-" Shorthand notation; fetches https://github.com/othree/es.next.syntax.vim
-Plug 'othree/es.next.syntax.vim'
-
-" Shorthand notation; fetches https://github.com/othree/javascript-libraries-syntax.vim
-Plug 'othree/javascript-libraries-syntax.vim'
-
-" Shorthand notation; fetches https://github.com/ternjs/tern_for_vim
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
-
-" Shorthand notation; fetches https://github.com/Shougo/neocomplete.vim
-Plug 'Shougo/neocomplete.vim'
-
-" Shorthand notation; fetches https://github.com/1995eaton/vim-better-javascript-completion
-Plug '1995eaton/vim-better-javascript-completion'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Group dependencies, vim-snippets depends on ultisnips
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
-
-" Add plugins to &runtimepath
-call plug#end()
 
 ""Make actionscript syntax works
 syntax on
