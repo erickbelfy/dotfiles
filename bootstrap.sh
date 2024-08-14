@@ -2,11 +2,11 @@
 rm $HOME/.zshrc
 rm $HOME/.npmrc
 rm $HOME/.gitconfig
-ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
-ln -s $HOME/dotfiles/.npmrc $HOME/.npmrc
-ln -s $HOME/dotfiles/.gitconfig $HOME/.gitconfig
-ln -s $HOME/dotfiles/.gitignore_global $HOME/.gitignore_global
-ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
+ln -s $HOME/repos/dotfiles/.zshrc $HOME/.zshrc
+ln -s $HOME/repos/dotfiles/.npmrc $HOME/.npmrc
+ln -s $HOME/repos/dotfiles/.gitconfig $HOME/.gitconfig
+ln -s $HOME/repos/dotfiles/.gitignore_global $HOME/.gitignore_global
+ln -s $HOME/repos/dotfiles/.vimrc $HOME/.vimrc
 
 npm install -g jsonlint
 npm install -g eslint
