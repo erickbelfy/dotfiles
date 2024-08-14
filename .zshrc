@@ -28,6 +28,3 @@ set -o vi
 
 
 export EDITOR=vim
-
-# Trigger ~/.bashrc commands
-source ~/.zshrc
