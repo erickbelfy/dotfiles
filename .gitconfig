@@ -1,5 +1,6 @@
-; I removed the [user] block on purpose so other people don't copy it by mistake
-; you will need to set these values
+[user]
+	email = erick.belf@gmail.com
+	name = Erick Belfort
 [github]
     user = erickbelfy
 [color]
@@ -48,6 +49,3 @@
 
 [diff]
   tool = vimdiff
-[user]
-	email = erick.belf@gmail.com
-	name = Erick Belfort
