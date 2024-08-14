@@ -26,10 +26,6 @@ export EDITOR="$VISUAL"
 # vi mode on terminal
 set -o vi
 
-# My utils functions
-[ -d "$HOME/dotfiles" ] && source $HOME/dotfiles/utils
-[ -d "$HOME/dotfiles" ] && source $HOME/dotfiles/utils
-[ -d "$HOME/Documents/repos/z" ] && . $HOME/Documents/repos/z/z.sh
 
 export EDITOR=vim
 
